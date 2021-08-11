@@ -28,7 +28,6 @@ export const actions = {
         }
       );
       const data = await response.json();
-      console.log(data);
       commit("updateFoodData", data);
     } catch (error) {
       console.log(error);
