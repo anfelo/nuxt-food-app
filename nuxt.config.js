@@ -1,5 +1,6 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  target: "static",
   head: {
     title: "nuxt-food-app",
     htmlAttrs: {
@@ -37,5 +38,11 @@ export default {
   modules: [],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
-  build: {}
+  build: {
+    babel: {
+      plugins: [
+        ["@babel/plugin-proposal-private-property-in-object", { loose: true }]
+      ]
+    }
+  }
 };

@@ -1,16 +1,24 @@
+import { v4 as uuidv4 } from "uuid";
+
 export const state = () => ({
-  fooddata: []
+  fooddata: [],
+  cart: []
 });
 
-// export const getters = {
-//   getterValue: state => {
-//     return state.value
-//   }
-// }
+export const getters = {
+  totalPrice: state => {
+    if (!state.cart.length) return 0;
+    return state.cart.reduce((acc, curr) => acc + +curr.combinedPrice, 0);
+  }
+};
 
 export const mutations = {
   updateFoodData: (state, payload) => {
     state.fooddata = payload;
+  },
+  addToCart: (state, payload) => {
+    payload.id = uuidv4();
+    state.cart.push(payload);
   }
 };
 
